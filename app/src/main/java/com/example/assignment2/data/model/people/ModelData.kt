@@ -1,19 +1,20 @@
 package com.example.assignment2.data.model.people
 
 
+
 import com.google.gson.annotations.SerializedName
 
-data class ModelData(
-    @SerializedName("title")
-    val title: String? = "",
+data class DataModel(
     @SerializedName("body")
     val body: String? = "",
-    @SerializedName("id")
-    val id: String? = "",
-    @SerializedName("toId")
-    val toId: String? = "",
     @SerializedName("fromId")
     val fromId: String? = "",
+    @SerializedName("id")
+    val id: String? = "",
     @SerializedName("meetingid")
-    val meetingid: String? = ""
+    val meetingid: String? = "",
+    @SerializedName("title")
+    val title: String? = "",
+    @SerializedName("toId")
+    val toId: String? = ""
 )

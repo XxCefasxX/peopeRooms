@@ -7,11 +7,13 @@
     <fragment
         android:id="@+id/navigation_home"
         android:label="@string/home"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_people"
+        android:name="com.example.assignment2.ui.people.PeopleFragment"/>
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:label="@string/home"
-        tools:layout="@layout/fragment_dashboard"/>
+        tools:layout="@layout/fragment_rooms"
+        android:name="com.example.assignment2.ui.rooms.RoomsFragment"/>
 
 </navigation>
