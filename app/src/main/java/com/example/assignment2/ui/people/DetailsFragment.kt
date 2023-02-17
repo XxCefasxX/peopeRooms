@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.assignment2.data.model.people.PeopleModelItemModel
 import com.example.assignment2.databinding.FragmentPeopleBinding
@@ -23,7 +24,8 @@ class DetailsFragment() : Fragment() {
     private var _binding: PeopleDetailsFragmeentBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: PeopleViewModel by viewModels()
+//    private val viewModel: PeopleViewModel by viewModels()
+    private val viewModel: PeopleViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

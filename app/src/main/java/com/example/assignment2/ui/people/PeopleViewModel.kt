@@ -23,8 +23,8 @@ class PeopleViewModel @Inject constructor(
     private val _result = MutableLiveData<ResponseType<PeopleModel>>()
     val result: LiveData<ResponseType<PeopleModel>> = _result
 
-    companion object{
         private var details = PeopleModelItemModel()
+    companion object{
     }
     private val _person = MutableLiveData<PeopleModelItemModel>()
     val person: LiveData<PeopleModelItemModel> = _person
@@ -42,22 +42,29 @@ class PeopleViewModel @Inject constructor(
     }
 
     fun setDetails(peopleModelItemModel: PeopleModelItemModel) {
-        Log.d(TAG, "getDetails: enter $peopleModelItemModel")
-        details = peopleModelItemModel
-
-    }
-
-    fun getDetails() {
         viewModelScope.launch {
             Log.d(TAG, "getDetails: launch")
             //_person.postValue(ResponseType.Loading())
             Log.d(TAG, "getDetails: _person ${_person.value}")
-            _person.value = details
+            _person.value = peopleModelItemModel
 //            _person.postValue( peopleModelItemModel)
             //_person.postValue(ResponseType.Success(peopleModelItemModel as Details))
             Log.d(TAG, "getDetails: _person assigned ${_person.value}")
             Log.d(TAG, "getDetails: person assigned ${person.value}")
         }
+    }
+
+    fun getDetails() {
+//        viewModelScope.launch {
+//            Log.d(TAG, "getDetails: launch")
+//            //_person.postValue(ResponseType.Loading())
+//            Log.d(TAG, "getDetails: _person ${_person.value}")
+//            _person.value = details
+////            _person.postValue( peopleModelItemModel)
+//            //_person.postValue(ResponseType.Success(peopleModelItemModel as Details))
+//            Log.d(TAG, "getDetails: _person assigned ${_person.value}")
+//            Log.d(TAG, "getDetails: person assigned ${person.value}")
+//        }
     }
 
 }

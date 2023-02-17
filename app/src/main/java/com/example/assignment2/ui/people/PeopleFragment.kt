@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,8 +29,8 @@ class PeopleFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
-    private val viewModel: PeopleViewModel by viewModels()
-
+//    private val viewModel: PeopleViewModel by viewModels()
+private val viewModel: PeopleViewModel by activityViewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,13 +41,13 @@ class PeopleFragment : Fragment() {
 
         viewModel.result.observe(viewLifecycleOwner) {
             when (it) {
-                is ResponseType.Loading<*> -> {
+                is ResponseType.Loading -> {
                     Toast.makeText(context, "Loading. . .!", Toast.LENGTH_SHORT).show()
                 }
-                is ResponseType.Success<*> -> {
+                is ResponseType.Success -> {
                     initViews(it.data)
                 }
-                is ResponseType.Error<*> -> {
+                is ResponseType.Error -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
