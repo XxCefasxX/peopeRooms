@@ -15,6 +15,6 @@ class RepositoryImpl @Inject constructor(
     }
 
     override suspend fun getRoomsList(): Response<RoomModel> {
-        TODO("Not yet implemented")
+        return apiDetails.getRoomList()
     }
 }

@@ -1,5 +1,6 @@
 package com.example.assignment2.ui.people
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,6 +9,7 @@ import com.example.assignment2.R
 import com.example.assignment2.data.model.people.PeopleModelItemModel
 import com.example.assignment2.databinding.PeopleItemBinding
 
+private const val TAG = "PeopleAdapter"
 class PeopleAdapter(
     val peopleList: ArrayList<PeopleModelItemModel>,
     val clickListener: (PeopleModelItemModel) -> Unit
@@ -19,6 +21,7 @@ class PeopleAdapter(
 
         fun setup(peopleModelItemModel: PeopleModelItemModel) {
             with(itemView) {
+                Log.d(TAG, "setup:avatar =  ${peopleModelItemModel.avatar}")
                 Glide.with(context)
                     .load(peopleModelItemModel.avatar)
                     .placeholder(R.drawable.animate_loading)
@@ -27,6 +30,9 @@ class PeopleAdapter(
             }
             view.tvTitle.text = "${peopleModelItemModel.firstName} ${peopleModelItemModel.lastName}"
             view.tvDesc.text = peopleModelItemModel.jobtitle
+            view.ivUserPic.setOnClickListener {
+                clickListener.invoke(peopleModelItemModel)
+            }
         }
     }
 
